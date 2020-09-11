@@ -13,7 +13,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5500",
-    "https://thegreatyamori.github.io/motor-inferencia-prolog/"
+    "https://thegreatyamori.github.io"
 ]
 
 app.add_middleware(

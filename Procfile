@@ -1,1 +1,1 @@
-web: uvicorn iris.app:app
+web: uvicorn main:app

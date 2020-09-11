@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 from prologpy.solver import Solver
 
@@ -9,6 +10,19 @@ class PrologTest(BaseModel):
     query_text: str
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5500",
+    "https://thegreatyamori.github.io/motor-inferencia-prolog/"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def run_query(rules_text, query_text):
     """Interpret the entered rules and query and display the results in the
